@@ -27,6 +27,7 @@ export default function ViewNav() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        sx={{fontSize:"0.875rem", padding:"0px",width:"fir-content", height:"1.2rem"}}
       >
        View
       </Button>

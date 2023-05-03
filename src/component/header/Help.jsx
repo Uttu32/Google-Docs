@@ -28,6 +28,7 @@ export default function BasicMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{fontSize:"0.875rem",width:"fit-content", padding:"0px", height:"1.2rem"}}
       >
         Help
       </Button>

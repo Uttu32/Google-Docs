@@ -1,0 +1,25 @@
+.MainBoundary{
+    border: 1px solid lightgrey;
+    height: 100%;
+    background-color: rgba(248,250,253,255);
+    position: sticky;
+    z-index: 1.5;
+}
+
+.Content{
+    border: 1px solid lightgray;
+    width: 51rem;
+    height: 66rem;
+    position: relative;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    margin-left: 25%;
+    background-color: white;
+}
+
+.Content>span{
+    position: relative;
+    left: 5%;
+    top: 5%;
+
+}

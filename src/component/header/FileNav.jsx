@@ -35,6 +35,7 @@ export default function FileNav() {
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
+        sx={{fontSize:"0.875rem",width:"fit-content", padding:"0px", height:"1.2rem"}}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
