@@ -1,6 +1,9 @@
 .mainContainer{
     display: flex;
     justify-content: center;
+    align-items: start;
+    height: 3rem;
+    /* border: 1px solid; */
 }
 .vl {
     border-left: 1.5px solid gray;
@@ -16,7 +19,7 @@
     padding-left: 0.7em;
     padding-right: 0.7em;
     border-radius: 25px;
-    margin-top: 1em;
+    /* margin-top: 1em; */
     width: 95%;
     background-color: #edf3fb;
 }
@@ -65,4 +68,12 @@
 
 .h6{
     font-size: 0.6em;
+}
+
+.RightContainer{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid; */
+    justify-content: center;
+    gap: 2rem;
 }

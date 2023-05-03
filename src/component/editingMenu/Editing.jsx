@@ -103,9 +103,12 @@ const Editing = () => {
           <MdFormatListBulleted fontSize="1.1em" className={Estyles.icons} />
           <MdFormatListNumbered fontSize="1.1em" className={Estyles.icons} />
         </div>
-        <div>
-          <label>{<FiEdit2  fontSize="1.1em" className={Estyles.icons}/>} Editing</label>
-          <select style={{appearance: "none",border:'none'}}></select>
+        <div className={Estyles.RightContainer}>
+          <label>
+            <FiEdit2 fontSize="1.1em" />
+          </label>
+          <label> Editing</label>
+          <select style={{ appearance: "none", border: "none" }}></select>
         </div>
       </nav>
     </div>

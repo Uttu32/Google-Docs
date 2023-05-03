@@ -32,6 +32,7 @@ export default function Format() {
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
+        sx={{fontSize:"0.875rem", padding:"0px",width:"fit-content", height:"1.2rem"}}
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >

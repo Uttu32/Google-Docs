@@ -13,6 +13,10 @@ import Tools from "./Tools";
 import Styles from "./Header.module.css";
 import Extensions from './Extentions'
 import Help from './Help';
+import FileNav from './FileNav';
+import EditNav from './EditNav';
+import ViewNav from "./ViewNav";
+import InsertNav from './InsertNav';
 
 const Header = () => {
   return (
@@ -26,13 +30,17 @@ const Header = () => {
         <div className={Styles.SecondPart}>
           <div className={Styles.SecondUpper}>
             {/* upper left containing input field and 3 logo */}
-            <p>Untitled Document</p>
+            <p contenteditable="true">Untitled Document</p>
             <StarBorderOutlinedIcon cursor="pointer" size="1.5em"/>
             <MdDriveFileMoveOutline cursor="pointer" size="1.5em"/>
             <MdOutlineCloudDone cursor="pointer" size="1.5em"/>
           </div>
           <div className={Styles.SecondLower}>
             {/* 8 text like file edit etc. */}
+            <FileNav/>
+            <EditNav/>
+            <ViewNav/>
+            <InsertNav/>
             <Format />
             <Tools/>
             <Extensions/>

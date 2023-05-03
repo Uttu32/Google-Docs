@@ -1,8 +1,11 @@
 .Main{
-    border: 1px solid;
+    /* border: 1px solid; */
     display: flex;
     justify-content: space-between;
     height: 80%;
+    width: 96%;
+    position: relative;
+    left: 2rem;
 }
 
 .LeftSide{
@@ -30,6 +33,11 @@
 
 }
 
+.SecondLower{
+    display: flex;
+    /* gap: 0.3rem; */
+}
+
 .LeftSide{
     /* border: 2px solid red; */
     display: flex;
@@ -44,6 +52,6 @@
     justify-content: space-around;
     gap: 2rem;
     /* border: 1px solid rebeccapurple; */
-    position: relative;
-    right: 2.3rem;
+    /* position: relative; */
+    /* right: 2.3rem; */
 }
