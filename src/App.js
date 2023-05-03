@@ -1,10 +1,14 @@
 import Header from './component/fileMenu/Header';
+
 import './App.css';
+
 
 function App() {
   return (
     <div>
+
       <Header/>
+
     </div>
   );
 }
