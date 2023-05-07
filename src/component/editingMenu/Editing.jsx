@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import Estyles from "./Editing.module.css";
 import { BiUndo } from "react-icons/bi";
 import { BiRedo } from "react-icons/bi";
@@ -20,6 +20,9 @@ import { MdFormatListBulleted } from "react-icons/md";
 import { MdFormatListNumbered } from "react-icons/md";
 import { FiEdit2 } from "react-icons/fi";
 const Editing = () => {
+
+  const refer = useRef(null);
+
   const zoom = [50, 75, 90, 100];
   const heading = [
     { type: "h1", label: "Heading 1" },
@@ -32,85 +35,105 @@ const Editing = () => {
   const fontSize = [8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96];
   // const count = [1, 2, 3, 4, 5, 6];
 
+  function handleItalic(){
+    document.execCommand("italic");
+  }
+
+
+
   return (
-    <div className={Estyles.mainContainer}>
-      <nav className={Estyles.navContainer}>
-        <div className={Estyles.rigthSide}>
-          <BiUndo fontSize="1.1em" className={Estyles.icons} />
-          <BiRedo fontSize="1.1em" className={Estyles.icons} />
-          <AiOutlinePrinter fontSize="1.1em" className={Estyles.icons} />
-          <MdSpellcheck fontSize="1.1em" className={Estyles.icons} />
-          <BiPaintRoll fontSize="1.1em" className={Estyles.icons} />
+    <div>
+      <div className={Estyles.mainContainer}>
+        <nav className={Estyles.navContainer}>
+          <div className={Estyles.rigthSide}>
+            <BiUndo fontSize="1.1em" className={Estyles.icons} />
+            <BiRedo fontSize="1.1em" className={Estyles.icons} />
+            <AiOutlinePrinter fontSize="1.1em" className={Estyles.icons} />
+            <MdSpellcheck fontSize="1.1em" className={Estyles.icons} />
+            <BiPaintRoll fontSize="1.1em" className={Estyles.icons} />
 
-          {/* Zoom */}
+            {/* Zoom */}
 
-          <select style={{ border: "none", backgroundColor: "#edf3fb" }}>
-            {zoom.map((x, index) => {
-              return <option key={index}>{x}</option>;
-            })}
-          </select>
-          <div class={Estyles.vl}></div>
+            <select style={{ border: "none", backgroundColor: "#edf3fb" }}>
+              {zoom.map((x, index) => {
+                return <option key={index}>{x}</option>;
+              })}
+            </select>
+            <div class={Estyles.vl}></div>
 
-          {/* heading */}
+            {/* heading */}
 
-          <select
-            style={{ border: "none", backgroundColor: "#edf3fb" }}
-            className={Estyles.dropdown}
-          >
-            {heading.map((x, index) => {
-              return (
-                <option className={Estyles[x.type]} key={index}>
-                  {x.label}
-                </option>
-              );
-            })}
-          </select>
-          <div class={Estyles.vl}></div>
-          <HiMinusSm fontSize="1.1em" className={Estyles.icons} />
+            <select
+              style={{ border: "none", backgroundColor: "#edf3fb" }}
+              className={Estyles.dropdown}
+            >
+              {heading.map((x, index) => {
+                return (
+                  <option className={Estyles[x.type]} key={index}>
+                    {x.label}
+                  </option>
+                );
+              })}
+            </select>
+            <div class={Estyles.vl}></div>
+            <HiMinusSm fontSize="1.1em" className={Estyles.icons} />
 
-          {/* fontSize */}
+            {/* fontSize */}
 
-          <select
-            style={{
-              appearance: "none",
-              width: "32px",
-              height: "24px",
-              textAlign: "center",
-              borderRadius: "5px",
-              backgroundColor: "#edf3fb",
-            }}
-          >
-            {fontSize.map((x, index) => {
-              return <option key={index}>{x}</option>;
-            })}
-          </select>
-          <HiPlusSm fontSize="1.1em" className={Estyles.icons} />
-          <div class={Estyles.vl}></div>
-          <BsTypeBold fontSize="1.1em" className={Estyles.icons} />
-          <BiItalic fontSize="1.1em" className={Estyles.icons} />
-          <MdFormatUnderlined fontSize="1.1em" className={Estyles.icons} />
-          <TbTextColor fontSize="1.1em" className={Estyles.icons} />
-          <BiHighlight fontSize="1.1em" className={Estyles.icons} />
-          <div class={Estyles.vl}></div>
-          <GrGallery fontSize="1.1em" className={Estyles.icons} />
-          <div class={Estyles.vl}></div>
-          <MdOutlineFormatAlignLeft
-            fontSize="1.1em"
-            className={Estyles.icons}
-          />
-          <MdFormatLineSpacing fontSize="1.1em" className={Estyles.icons} />
-          <MdChecklistRtl fontSize="1.1em" className={Estyles.icons} />
-          <MdFormatListBulleted fontSize="1.1em" className={Estyles.icons} />
-          <MdFormatListNumbered fontSize="1.1em" className={Estyles.icons} />
+            <select
+              style={{
+                appearance: "none",
+                width: "32px",
+                height: "24px",
+                textAlign: "center",
+                borderRadius: "5px",
+                backgroundColor: "#edf3fb",
+              }}
+            >
+              {fontSize.map((x, index) => {
+                return <option key={index}>{x}</option>;
+              })}
+            </select>
+            <HiPlusSm fontSize="1.1em" className={Estyles.icons} />
+            <div class={Estyles.vl}></div>
+              <BsTypeBold
+                fontSize="1.1em"
+                className={Estyles.icons}
+              />
+              <BiItalic onClick={handleItalic} fontSize="1.1em" className={Estyles.icons} />
+              <MdFormatUnderlined fontSize="1.1em" className={Estyles.icons} />
+              <TbTextColor fontSize="1.1em" className={Estyles.icons} />
+              <BiHighlight fontSize="1.1em" className={Estyles.icons} />
+            <div class={Estyles.vl}></div>
+            <GrGallery fontSize="1.1em" className={Estyles.icons} />
+            <div class={Estyles.vl}></div>
+            <MdOutlineFormatAlignLeft
+              fontSize="1.1em"
+              className={Estyles.icons}
+            />
+            <MdFormatLineSpacing fontSize="1.1em" className={Estyles.icons} />
+            <MdChecklistRtl fontSize="1.1em" className={Estyles.icons} />
+            <MdFormatListBulleted fontSize="1.1em" className={Estyles.icons} />
+            <MdFormatListNumbered fontSize="1.1em" className={Estyles.icons} />
+          </div>
+          <div className={Estyles.RightContainer}>
+            <label>
+              <FiEdit2 fontSize="1.1em" />
+            </label>
+            <label> Editing</label>
+            <select style={{ appearance: "none", border: "none" }}></select>
+          </div>
+        </nav>
+      </div>
+      {/* //Text Area */ }
+      <div className={Estyles.MainBoundary}>
+        <div id='edit' className={Estyles.Content}
+        contenteditable="true" 
+        ref={refer}
+        >
+          Type @ insert
         </div>
-        <div className={Estyles.RightContainer}>
-          <label>
-            <FiEdit2 fontSize="1.1em" />
-          </label>
-          <label> Editing</label>
-          <select style={{ appearance: "none", border: "none" }}></select>
-        </div>
-      </nav>
+      </div>
     </div>
   );
 };

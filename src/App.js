@@ -1,6 +1,7 @@
 import Header from './component/header/Header';
-import Editing from './component/editingMenu/Editing';
-import TextArea from './component/textArea/TextArea';
+// import Editing from './component/editingMenu/Editing';
+// import TextArea from "./component/textArea/TextArea";
+import Editin from "./component/editingMenu/Editin";
 import './App.css';
 
 
@@ -9,11 +10,12 @@ function App() {
     <div>
       <div className="Header">
         <Header/>
-        <Editing />
+        {/* <Editing /> */}
+        <Editin />
       </div>
-      <div>
-        <TextArea />
-      </div>
+      
+      {/* <TextArea/> */}
+      
     </div>
   );
 }
