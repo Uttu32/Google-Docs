@@ -1,5 +1,5 @@
 import React from "react";
-import { FcDocument } from "react-icons/fc";
+import { IoDocumentText } from "react-icons/io5";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import { MdDriveFileMoveOutline } from "react-icons/md";
 import { BiCommentDetail } from "react-icons/bi";
@@ -24,7 +24,7 @@ const Header = () => {
       <div className={Styles.LeftSide}>
         <div className={Styles.firstIcon}>
           {/* document image here */}
-          <FcDocument cursor="pointer" size="3em" />
+          <IoDocumentText cursor="pointer" size="3em" color="#3F51B5" />
         </div>
 
         <div className={Styles.SecondPart}>
