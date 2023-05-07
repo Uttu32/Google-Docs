@@ -35,10 +35,16 @@ export default function FileNav() {
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
-        sx={{fontSize:"0.875rem",width:"fit-content", padding:"0px", height:"1.2rem"}}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        sx={{
+          fontSize: "0.875rem",
+          padding: "0px",
+          width: "fit-content",
+          height: "1.2rem",
+          paddingLeft: "0"
+        }}
       >
         File
       </Button>
@@ -108,12 +114,12 @@ export default function FileNav() {
         </MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
-          <  MdOutlineLanguage/>
+          <MdOutlineLanguage />
           Language
         </MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
-          <DescriptionIcon  />
+          <DescriptionIcon />
           Page setup
         </MenuItem>
         <MenuItem onClick={handleClose}>

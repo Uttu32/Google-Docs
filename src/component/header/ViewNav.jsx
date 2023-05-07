@@ -3,11 +3,9 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import {MdOutlineModeEdit } from "react-icons/md";
+import { MdOutlineModeEdit } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import { BiFullscreen} from "react-icons/bi";
-
-
+import { BiFullscreen } from "react-icons/bi";
 
 export default function ViewNav() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,9 +25,14 @@ export default function ViewNav() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{fontSize:"0.875rem", padding:"0px",width:"fir-content", height:"1.2rem"}}
+        sx={{
+          fontSize: "0.875rem",
+          padding: "0px",
+          width: "fit-content",
+          height: "1.2rem",
+        }}
       >
-       View
+        View
       </Button>
       <Menu
         id="basic-menu"
@@ -46,35 +49,27 @@ export default function ViewNav() {
         </MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
-          <TiTick  /> Show print layout{" "}
+          <TiTick /> Show print layout{" "}
         </MenuItem>
-    
+
         <MenuItem onClick={handleClose}>
           {" "}
-          <TiTick  />  Show ruler
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          {" "}
-          <TiTick  />  Show outline
+          <TiTick /> Show ruler
         </MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
-           Show equation toolbar
+          <TiTick /> Show outline
         </MenuItem>
+        <MenuItem onClick={handleClose}> Show equation toolbar</MenuItem>
+        <MenuItem onClick={handleClose}> Show non-printing characters</MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
-           Show non-printing characters
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          {" "}
-          <TiTick  />  Show comments
+          <TiTick /> Show comments
         </MenuItem>
         <MenuItem onClick={handleClose}>
           {" "}
           <BiFullscreen /> Full screen
         </MenuItem>
-       
-       
       </Menu>
     </div>
   );
