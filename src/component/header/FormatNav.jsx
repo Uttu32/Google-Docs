@@ -37,6 +37,7 @@ export default function Format() {
           padding: "0px",
           width: "fit-content",
           height: "1.2rem",
+          color:"black"
         }}
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}

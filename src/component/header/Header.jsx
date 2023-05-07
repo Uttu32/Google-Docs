@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { IoDocumentText } from "react-icons/io5";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import { MdDriveFileMoveOutline } from "react-icons/md";
@@ -17,8 +17,16 @@ import FileNav from "./FileNav";
 import EditNav from "./EditNav";
 import ViewNav from "./ViewNav";
 import InsertNav from "./InsertNav";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const Header = () => {
+  const [star, setStar] = useState(false);
+
+  function handleColor(){
+    setStar(!star);
+  }
+
   return (
     <div className={Styles.Main}>
       <div className={Styles.LeftSide}>
@@ -31,7 +39,9 @@ const Header = () => {
           <div className={Styles.SecondUpper}>
             {/* upper left containing input field and 3 logo */}
             <p contenteditable="true">Untitled Document</p>
-            <StarBorderOutlinedIcon cursor="pointer" size="1.5em" />
+             {/* <StarBorderOutlinedIcon color="red" cursor="pointer" size="1.5em" /> */}
+          {star? <StarIcon onClick={handleColor} sx={{color:"blue"}} /> :<StarBorderIcon onClick={handleColor} /> }
+            
             <MdDriveFileMoveOutline cursor="pointer" size="1.5em" />
             <MdOutlineCloudDone cursor="pointer" size="1.5em" />
           </div>

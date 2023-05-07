@@ -125,3 +125,9 @@
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px
 }
+
+.RightLogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

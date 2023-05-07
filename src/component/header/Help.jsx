@@ -33,6 +33,7 @@ export default function BasicMenu() {
           width: "fit-content",
           padding: "0px",
           height: "1.2rem",
+          color:"black"
         }}
       >
         Help

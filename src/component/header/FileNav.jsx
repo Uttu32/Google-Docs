@@ -43,7 +43,9 @@ export default function FileNav() {
           padding: "0px",
           width: "fit-content",
           height: "1.2rem",
-          paddingLeft: "0"
+          paddingLeft: "0",
+          minWidth:"2.5rem",
+          color:"black"
         }}
       >
         File
