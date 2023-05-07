@@ -24,7 +24,7 @@
     background-color: #edf3fb;
 }
 
-.rigthSide{
+.leftSide{
     display: flex;
     justify-content: space-between;
     /* border: 1px solid; */
@@ -34,6 +34,7 @@
 .icons{
     padding: 5px;
     border-radius: 2px;
+    border: none;
 }
 
 .icons:hover{
@@ -106,4 +107,20 @@
 
 .Content::-webkit-scrollbar {
     display: none;
+}
+
+.linkBox{
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    /* border: 1px solid; */
+    width: 15rem;
+    height: 15rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px
 }

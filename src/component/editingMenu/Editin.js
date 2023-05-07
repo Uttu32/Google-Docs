@@ -7,13 +7,14 @@ import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
 import { firstIcons } from "../../Icon/Icon";
 import { AiOutlinePrinter } from "react-icons/ai";
+import Estyles from "./Editing.module.css";
 import { zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
 
 const Editing = () => {
   const refer = useRef("");
   const [zoomEle, setZoomEle] = useState("100%");
   const [fontNames, setFontNames] = useState("Font Style");
-  const [fontSize, setFontSize] = useState("Font Size");
+  const [fontSize, setFontSize] = useState("Normal text");
   const [color, setColor] = useState("#000000");
   const [showLink, setShowLink] = useState(false);
   const [link, setLink] = useState("");
@@ -53,7 +54,7 @@ const Editing = () => {
   // Font Family
   function handleFontStyles(e) {
     setFontNames(e.target.value);
-    document.execCommand("fontName");
+    document.execCommand("fontName", false, fontNames);
     console.log(e.target.value);
   }
 
@@ -94,76 +95,141 @@ const Editing = () => {
   }
 
   return (
-    <div>
-      {/* Left side logo */}
-      {/* redo and undo button */}
-      <div>
-        {firstIcons.map((ele) => {
-          return <button onClick={() => handleAction(ele)}>{ele.icon}</button>;
-        })}
-        {/* print option */}
-        <button onClick={handlePrinter}>
-          <AiOutlinePrinter />
-        </button>
+    <>
+      <div className={Estyles.mainContainer}>
+        {/* Left side logo */}
+        {/* redo and undo button */}
+        <nav className={Estyles.navContainer}>
+          <div className={Estyles.leftSide}>
+            {firstIcons.map((ele) => {
+              return (
+                <button
+                  onClick={() => handleAction(ele)}
+                  className={Estyles.icons}
+                >
+                  {ele.icon}
+                </button>
+              );
+            })}
+            {/* print option */}
+            {/* <button > */}
+            <AiOutlinePrinter
+              onClick={handlePrinter}
+              fontSize="1.1rem"
+              className={Estyles.icons}
+            />
+            {/* </button> */}
 
-        {/* zoom */}
+            {/* zoom */}
 
-        <select style={{ width: "100%" }} id="fontStyle" onChange={handleZoom}>
-          <option>{zoomEle}</option>
-          {zoom.map((x) => (
-            <option key={x}>{x}</option>
-          ))}
-        </select>
+            <select
+              style={{
+                appearance: "none",
+                // width: "36px",
+                height: "24px",
+                textAlign: "center",
+                borderRadius: "5px",
+                backgroundColor: "#edf3fb",
+                border: "none",
+              }}
+              id="fontStyle"
+              onChange={handleZoom}
+            >
+              <option>{zoomEle}</option>
+              {zoom.map((x) => (
+                <option key={x}>{x}</option>
+              ))}
+            </select>
+            <div class={Estyles.vl}></div>
+            {/* font family */}
+            <select
+              style={{
+                appearance: "none",
+                // width: "32px",
+                // height: "24px",
+                textAlign: "center",
+                // borderRadius: "5px",
+                backgroundColor: "#edf3fb",
+                border: "none",
+              }}
+              className={Styles.fontStyle}
+              id="fontStyle"
+              onChange={handleFontStyles}
+            >
+              <option>{fontNames}</option>
+              {ListFontFam.map((x) => (
+                <option key={x}>{x}</option>
+              ))}
+            </select>
+            <div class={Estyles.vl}></div>
+            {/* font size */}
+            <select
+              className={Estyles.icons}
+              style={{ backgroundColor: "#edf3fb" }}
+              id="fontSize"
+              onChange={handleFontSize}
+            >
+              <option className={Estyles.icons} style={{ width: "18px" }}>
+                {fontSize}
+              </option>
+              {fontSizes.map((x) => (
+                <option
+                  style={{ width: "18px" }}
+                  className={Estyles.icons}
+                  key={x}
+                >
+                  {x}
+                </option>
+              ))}
+            </select>
+            <div class={Estyles.vl}></div>
+            {/* Bold, italic and underline */}
+            {style.map((ele) => {
+              return (
+                <span
+                  className={Estyles.icons}
+                  onClick={() => handleAction(ele)}
+                >
+                  {ele.icon}
+                </span>
+              );
+            })}
 
-        {/* font family */}
-        <select
-          className={Styles.fontStyle}
-          id="fontStyle"
-          onChange={handleFontStyles}
-        >
-          <option>{fontNames}</option>
-          {ListFontFam.map((x) => (
-            <option key={x}>{x}</option>
-          ))}
-        </select>
+            {/* text color */}
+            {/* <button> */}
+            <label htmlFor="color">
+              <TbTextColor
+                style={{ color: color }}
+                fontSize="1.1rem"
+                className={Estyles.icons}
+              />
+            </label>
+            <input
+              className={style.input}
+              id="color"
+              type="color"
+              value={color}
+              onChange={handleFontColors}
+            />
+            {/* </button> */}
+            <div class={Estyles.vl}></div>
+            {/* Link */}
+            {/* <button > */}
+            <label onClick={() => handleOpen("link")} htmlFor="link">
+              <BsLink fontSize="1.1rem" className={Estyles.icons} />
+            </label>
+            {/* </button> */}
+            {/* <button> */}
+            <label htmlFor="link">
+              <GrGallery
+                onClick={handleImageOpen}
+                fontSize="1.1rem"
+                className={Estyles.icons}
+              />
+            </label>
+            {/* </button> */}
 
-        {/* font size */}
-        <select id="fontSize" onChange={handleFontSize}>
-          <option>{fontSize}</option>
-          {fontSizes.map((x) => (
-            <option key={x}>{x}</option>
-          ))}
-        </select>
-        {/* Bold, italic and underline */}
-        {style.map((ele) => {
-          return <button onClick={() => handleAction(ele)}>{ele.icon}</button>;
-        })}
-        {/* text color */}
-        <button>
-          <label htmlFor="color">
-            <TbTextColor style={{ color: color }} />
-          </label>
-          <input
-            className={style.input}
-            id="color"
-            type="color"
-            value={color}
-            onChange={handleFontColors}
-          />
-        </button>
-        {/* Link */}
-        <button onClick={() => handleOpen("link")}>
-          <label htmlFor="link">
-            <BsLink />
-          </label>
-        </button>
-        <button>
-          <label htmlFor="link">
-            <GrGallery onClick={handleImageOpen} />
-          </label>
-        </button>
-
-        {/* {showLink ? (
+            {/* {showLink ? (
           <div className={Styles.linkBox}>
             <h4>Paste your Link Here....</h4>
 
@@ -177,28 +243,37 @@ const Editing = () => {
         ) : (
           ""
         )} */}
-        <input ref={inputImage} hidden onChange={captureImage} type="file" />
+            <input
+              ref={inputImage}
+              hidden
+              onChange={captureImage}
+              type="file"
+            />
 
-        {/* Aligning options */}
-        {icons.map((element, index) => (
-          <button key={index} onClick={() => handleAction(element)}>
-            {element.icon}
-          </button>
-        ))}
-      </div>
+            {/* Aligning options */}
+            {icons.map((element, index) => (
+              <button
+                className={Estyles.icons}
+                key={index}
+                onClick={() => handleAction(element)}
+              >
+                {element.icon}
+              </button>
+            ))}
+          </div>
 
-      {/* Right Side Logo */}
-      <div>
-        <label>
-          <FiEdit2 fontSize="1.1em" />
-        </label>
-        <label> Editing</label>
-        <select style={{ appearance: "none", border: "none" }}></select>
-      </div>
-
-      {/* Text Area */}
-      <div className={Styles.MainBoundary}>
-      {showLink ? (
+          {/* Right Side Logo */}
+          <div>
+            <label>
+              <FiEdit2 fontSize="1.1rem" className={Estyles.icons} />
+            </label>
+            <label> Editing</label>
+            <select style={{ appearance: "none", border: "none" }}></select>
+          </div>
+        </nav>
+        {/* Text Area */}
+        {/* <div className={Styles.MainBoundary}>
+        {showLink ? (
           <div className={Styles.linkBox}>
             <h4>Paste your Link Here....</h4>
 
@@ -212,16 +287,38 @@ const Editing = () => {
         ) : (
           ""
         )}
+      </div> */}
+      </div>
+      
+      <div className={Estyles.MainBoundary}>
+      {/* <div className={Estyles.MainBoundary}> */}
+        {showLink ? (
+          <div className={Estyles.linkBox}>
+            <h4>Paste your Link Here....</h4>
+
+            <input
+              id="link"
+              value={link}
+              type="url"
+              onChange={(e) => setLink(e.target.value)}
+            />
+          </div>
+        ) : (
+          <div style={{display:'none'}}></div>
+        )}
+      {/* </div> */}
         <div
           id="edit"
           className={Styles.Content}
           contenteditable="true"
           ref={refer}
+          style={{padding:'4rem', margin:'2rem'}}
         >
           Type @ insert
         </div>
+        
       </div>
-    </div>
+    </>
   );
 };
 
