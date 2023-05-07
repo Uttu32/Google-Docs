@@ -5,7 +5,6 @@ import { BsLink } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
 import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
-import { firstIcons } from "../../Icon/Icon";
 import PrintIcon from '@mui/icons-material/Print';
 import Estyles from "./Editing.module.css";
 import { firstIcons, zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
@@ -18,7 +17,7 @@ const Editing = () => {
   const [color, setColor] = useState("#000000");
   const [showLink, setShowLink] = useState(false);
   const [link, setLink] = useState("");
-  const inputImage = useRef();
+  const inputImage = useRef(null);
 
   function handleAction(ele) {
     document.execCommand(`${ele.action}`);
@@ -83,11 +82,15 @@ const Editing = () => {
   // capture Image
   function captureImage(event) {
     if (event.target.files[0]) {
-      document.execCommand(
-        "insertImage",
-        "",
-        URL.createObjectURL(event.target.files[0])
-      );
+      let imgUrl = URL.createObjectURL(event.target.files[0]);
+      let img = document.createElement("img");
+      console.log(imgUrl);
+
+      img.style.maxWidth = "35%"; 
+      img.style.maxHeight = "35%"; 
+
+      img.src = imgUrl;
+      document.execCommand("insertHTML", false, img.outerHTML);
     }
   }
 
@@ -141,15 +144,10 @@ const Editing = () => {
             {/* font family */}
             <select
               style={{
-                appearance: "none",
-               
-                textAlign: "center",
-               
+                appearance: "none",               
+                textAlign: "center",               
                 backgroundColor: "#edf3fb",
-                border: "none",
-                paddingLeft: "0px" ,
-                paddingRight:"0px",
-                
+                border: "none",              
               }}
             
               id="fontStyle"
@@ -230,12 +228,8 @@ const Editing = () => {
                 className={Estyles.icons}
               />
             </label>
-            <input
-              ref={inputImage}
-              hidden
-              onChange={(e)=>captureImage(e)}
-              type="file"
-            />
+            <input type="file" ref={inputImage}  onChange={captureImage} />
+            
 
             {/* Aligning options */}
 
@@ -263,6 +257,7 @@ const Editing = () => {
       </div>
       
       <div className={Estyles.MainBoundary}>
+        
      
         {showLink ? (
           <div className={Estyles.linkBox}>
@@ -288,6 +283,13 @@ const Editing = () => {
         >
           Type @ insert
         </div>
+        {/* <input
+          ref={inputImage}
+          hidden
+          accept="image/*"
+          onChange={captureImage}
+          type="file"
+        /> */}
         
       </div>
     </>
