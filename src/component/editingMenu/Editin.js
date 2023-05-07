@@ -221,14 +221,13 @@ const Editing = () => {
               <BsLink fontSize="1.1rem" className={Estyles.icons} />
             </label>
          
-            <label htmlFor="link">
+            <button onClick={handleImageOpen}>
               <GrGallery
-                onClick={handleImageOpen}
                 fontSize="1.1rem"
                 className={Estyles.icons}
               />
-            </label>
-            <input type="file" ref={inputImage}  onChange={captureImage} />
+            </button>
+            <input type="file" ref={inputImage} hidden onChange={captureImage} />
             
 
             {/* Aligning options */}
