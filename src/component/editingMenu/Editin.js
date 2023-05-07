@@ -5,7 +5,8 @@ import { BsLink } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
 import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
-import { AiOutlinePrinter } from "react-icons/ai";
+import { firstIcons } from "../../Icon/Icon";
+import PrintIcon from '@mui/icons-material/Print';
 import Estyles from "./Editing.module.css";
 import { firstIcons, zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
 
@@ -13,7 +14,7 @@ const Editing = () => {
   const refer = useRef("");
   const [zoomEle, setZoomEle] = useState("100%");
   const [fontNames, setFontNames] = useState("Font Style");
-  const [fontSize, setFontSize] = useState("Text Sizes");
+  const [fontSize, setFontSize] = useState("text");
   const [color, setColor] = useState("#000000");
   const [showLink, setShowLink] = useState(false);
   const [link, setLink] = useState("");
@@ -107,21 +108,19 @@ const Editing = () => {
                 </button>
               );
             })}
-            {/* print option */}
-            
-            <AiOutlinePrinter
-              onClick={handlePrinter}
-              // fontSize="1.1rem"
-              className={Estyles.icons}
+            {/* print option */}            
+            <PrintIcon
+             onClick={handlePrinter}
+             fontSize="2rem"
+             className={Estyles.icons}
             />
-            {/* </button> */}
 
             {/* zoom */}
 
             <select
               style={{
                 appearance: "none",
-                // width: "36px",
+               
                 height: "24px",
                 textAlign: "center",
                 borderRadius: "5px",
@@ -137,18 +136,22 @@ const Editing = () => {
               ))}
             </select>
             <div class={Estyles.vl}></div>
+
+
             {/* font family */}
             <select
               style={{
                 appearance: "none",
-                // width: "32px",
-                // height: "24px",
+               
                 textAlign: "center",
-                // borderRadius: "5px",
+               
                 backgroundColor: "#edf3fb",
                 border: "none",
+                paddingLeft: "0px" ,
+                paddingRight:"0px",
+                
               }}
-              className={Styles.fontStyle}
+            
               id="fontStyle"
               onChange={handleFontStyles}
             >
@@ -158,6 +161,8 @@ const Editing = () => {
               ))}
             </select>
             <div class={Estyles.vl}></div>
+
+
             {/* font size */}
 
             <select
@@ -180,7 +185,9 @@ const Editing = () => {
               ))}
             </select>
             <div class={Estyles.vl}></div>
+
             {/* Bold, italic and underline */}
+
             {style.map((ele) => {
               return (
                 <button
@@ -193,7 +200,7 @@ const Editing = () => {
             })}
 
             {/* text color */}
-            {/* <button> */}
+        
             <label htmlFor="color">
               <TbTextColor
                 style={{ color: color }}
@@ -207,15 +214,15 @@ const Editing = () => {
               value={color}
               onChange={handleFontColors}
             />
-            {/* </button> */}
+       
             <div class={Estyles.vl}></div>
             {/* Link */}
-            {/* <button > */}
-            <label onClick={() => handleOpen()} htmlFor="link">
+
+            
+            <label onClick={() => handleOpen("link")} htmlFor="link">
               <BsLink fontSize="1.1rem" className={Estyles.icons} />
             </label>
-            {/* </button> */}
-            {/* <button> */}
+         
             <label htmlFor="link">
               <GrGallery
                 onClick={handleImageOpen}
@@ -223,9 +230,6 @@ const Editing = () => {
                 className={Estyles.icons}
               />
             </label>
-            {/* </button> */}
-
-            
             <input
               ref={inputImage}
               hidden
@@ -234,6 +238,7 @@ const Editing = () => {
             />
 
             {/* Aligning options */}
+
             {icons.map((element, index) => (
               <button
                 className={Estyles.icons}
@@ -254,27 +259,11 @@ const Editing = () => {
             <select style={{ appearance: "none", border: "none" }}></select>
           </div>
         </nav>
-        {/* Text Area */}
-        {/* <div className={Styles.MainBoundary}>
-        {showLink ? (
-          <div className={Styles.linkBox}>
-            <h4>Paste your Link Here....</h4>
-
-            <input
-              id="link"
-              value={link}
-              type="url"
-              onChange={(e) => setLink(e.target.value)}
-            />
-          </div>
-        ) : (
-          ""
-        )}
-      </div> */}
+       
       </div>
       
       <div className={Estyles.MainBoundary}>
-      {/* <div className={Estyles.MainBoundary}> */}
+     
         {showLink ? (
           <div className={Estyles.linkBox}>
             <h4>Paste your Link Here....</h4>
@@ -289,7 +278,7 @@ const Editing = () => {
         ) : (
           <div style={{display:'none'}}></div>
         )}
-      {/* </div> */}
+     
         <div
           id="edit"
           className={Styles.Content}
