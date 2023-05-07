@@ -32,7 +32,8 @@ export default function EditNav() {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{fontSize:"0.875rem", padding:"0px",width:"fit-content", height:"1.2rem"}}
+        sx={{fontSize:"0.875rem", padding:"0px",width:"fit-content", height:"1.2rem",minWidth:"2.5rem",
+        color:"black"}}
       >
        Edit
       </Button>

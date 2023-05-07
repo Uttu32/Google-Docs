@@ -40,7 +40,7 @@ export default function InsertNav() {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        sx={{fontSize:"0.875rem",width:"fit-content", padding:"0px", height:"1.2rem"}}
+        sx={{fontSize:"0.875rem",width:"fit-content", padding:"0px", height:"1.2rem",color:"black"}}
         onClick={handleClick}
       >
         Insert

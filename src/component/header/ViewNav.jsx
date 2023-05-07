@@ -30,6 +30,8 @@ export default function ViewNav() {
           padding: "0px",
           width: "fit-content",
           height: "1.2rem",
+          minWidth:"2.5rem",
+          color:"black"
         }}
       >
         View

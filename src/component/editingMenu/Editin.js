@@ -5,16 +5,15 @@ import { BsLink } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
 import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
-import { firstIcons } from "../../Icon/Icon";
 import { AiOutlinePrinter } from "react-icons/ai";
 import Estyles from "./Editing.module.css";
-import { zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
+import { firstIcons, zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
 
 const Editing = () => {
   const refer = useRef("");
   const [zoomEle, setZoomEle] = useState("100%");
   const [fontNames, setFontNames] = useState("Font Style");
-  const [fontSize, setFontSize] = useState("Normal text");
+  const [fontSize, setFontSize] = useState("Text Sizes");
   const [color, setColor] = useState("#000000");
   const [showLink, setShowLink] = useState(false);
   const [link, setLink] = useState("");
@@ -55,7 +54,6 @@ const Editing = () => {
   function handleFontStyles(e) {
     setFontNames(e.target.value);
     document.execCommand("fontName", false, fontNames);
-    console.log(e.target.value);
   }
 
   //font Size
@@ -67,15 +65,14 @@ const Editing = () => {
   //color
   function handleFontColors(e) {
     setColor(e.target.value);
-    document.execCommand("foreColor");
+    document.execCommand("foreColor", false, color);
   }
 
   // Link
-  function handleOpen(value) {
-    setShowLink(!showLink ? true : false);
-    if (value === "link") {
-      document.execCommand("createLink");
-    }
+  function handleOpen() {
+    setShowLink(!showLink);
+    
+      document.execCommand("createLink",false,showLink);
     setLink("");
   }
   // Image
@@ -85,7 +82,6 @@ const Editing = () => {
   // capture Image
   function captureImage(event) {
     if (event.target.files[0]) {
-      console.log(event.target.files[0]);
       document.execCommand(
         "insertImage",
         "",
@@ -112,10 +108,10 @@ const Editing = () => {
               );
             })}
             {/* print option */}
-            {/* <button > */}
+            
             <AiOutlinePrinter
               onClick={handlePrinter}
-              fontSize="1.1rem"
+              // fontSize="1.1rem"
               className={Estyles.icons}
             />
             {/* </button> */}
@@ -163,6 +159,7 @@ const Editing = () => {
             </select>
             <div class={Estyles.vl}></div>
             {/* font size */}
+
             <select
               className={Estyles.icons}
               style={{ backgroundColor: "#edf3fb" }}
@@ -186,12 +183,12 @@ const Editing = () => {
             {/* Bold, italic and underline */}
             {style.map((ele) => {
               return (
-                <span
+                <button
                   className={Estyles.icons}
                   onClick={() => handleAction(ele)}
                 >
                   {ele.icon}
-                </span>
+                </button>
               );
             })}
 
@@ -206,7 +203,6 @@ const Editing = () => {
             </label>
             <input
               className={style.input}
-              id="color"
               type="color"
               value={color}
               onChange={handleFontColors}
@@ -215,7 +211,7 @@ const Editing = () => {
             <div class={Estyles.vl}></div>
             {/* Link */}
             {/* <button > */}
-            <label onClick={() => handleOpen("link")} htmlFor="link">
+            <label onClick={() => handleOpen()} htmlFor="link">
               <BsLink fontSize="1.1rem" className={Estyles.icons} />
             </label>
             {/* </button> */}
@@ -229,24 +225,11 @@ const Editing = () => {
             </label>
             {/* </button> */}
 
-            {/* {showLink ? (
-          <div className={Styles.linkBox}>
-            <h4>Paste your Link Here....</h4>
-
-            <input
-              id="link"
-              value={link}
-              type="url"
-              onChange={(e) => setLink(e.target.value)}
-            />
-          </div>
-        ) : (
-          ""
-        )} */}
+            
             <input
               ref={inputImage}
               hidden
-              onChange={captureImage}
+              onChange={(e)=>captureImage(e)}
               type="file"
             />
 
@@ -263,7 +246,7 @@ const Editing = () => {
           </div>
 
           {/* Right Side Logo */}
-          <div>
+          <div className={Estyles.RightLogo}>
             <label>
               <FiEdit2 fontSize="1.1rem" className={Estyles.icons} />
             </label>
