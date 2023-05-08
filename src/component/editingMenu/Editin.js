@@ -1,13 +1,20 @@
 import React, { useRef, useState } from "react";
-import Styles from "./Editing.module.css";
+// import Styles from "./Editing.module.css";
 import { TbTextColor } from "react-icons/tb";
 import { BsLink } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
 import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
-import PrintIcon from '@mui/icons-material/Print';
+import PrintIcon from "@mui/icons-material/Print";
 import Estyles from "./Editing.module.css";
-import { firstIcons, zoom, ListFontFam, fontSizes, style } from "../../Icon/Icon";
+import {
+  firstIcons,
+  zoom,
+  ListFontFam,
+  fontSizes,
+  style,
+} from "../../Icon/Icon";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const Editing = () => {
   const refer = useRef("");
@@ -71,8 +78,8 @@ const Editing = () => {
   // Link
   function handleOpen() {
     setShowLink(!showLink);
-    
-      document.execCommand("createLink",false,showLink);
+
+    document.execCommand("createLink", false, showLink);
     setLink("");
   }
   // Image
@@ -86,8 +93,8 @@ const Editing = () => {
       let img = document.createElement("img");
       console.log(imgUrl);
 
-      img.style.maxWidth = "35%"; 
-      img.style.maxHeight = "35%"; 
+      img.style.maxWidth = "35%";
+      img.style.maxHeight = "35%";
 
       img.src = imgUrl;
       document.execCommand("insertHTML", false, img.outerHTML);
@@ -111,11 +118,11 @@ const Editing = () => {
                 </button>
               );
             })}
-            {/* print option */}            
+            {/* print option */}
             <PrintIcon
-             onClick={handlePrinter}
-             fontSize="2rem"
-             className={Estyles.icons}
+              onClick={handlePrinter}
+              fontSize="2rem"
+              className={Estyles.icons}
             />
 
             {/* zoom */}
@@ -123,7 +130,7 @@ const Editing = () => {
             <select
               style={{
                 appearance: "none",
-               
+
                 height: "24px",
                 textAlign: "center",
                 borderRadius: "5px",
@@ -140,16 +147,14 @@ const Editing = () => {
             </select>
             <div class={Estyles.vl}></div>
 
-
             {/* font family */}
             <select
               style={{
-                appearance: "none",               
-                textAlign: "center",               
+                appearance: "none",
+                textAlign: "center",
                 backgroundColor: "#edf3fb",
-                border: "none",              
+                border: "none",
               }}
-            
               id="fontStyle"
               onChange={handleFontStyles}
             >
@@ -159,7 +164,6 @@ const Editing = () => {
               ))}
             </select>
             <div class={Estyles.vl}></div>
-
 
             {/* font size */}
 
@@ -198,7 +202,7 @@ const Editing = () => {
             })}
 
             {/* text color */}
-        
+
             <label htmlFor="color">
               <TbTextColor
                 style={{ color: color }}
@@ -212,23 +216,23 @@ const Editing = () => {
               value={color}
               onChange={handleFontColors}
             />
-       
+
             <div class={Estyles.vl}></div>
             {/* Link */}
 
-            
             <label onClick={() => handleOpen("link")} htmlFor="link">
               <BsLink fontSize="1.1rem" className={Estyles.icons} />
             </label>
-         
+
             <button onClick={handleImageOpen}>
-              <GrGallery
-                fontSize="1.1rem"
-                className={Estyles.icons}
-              />
+              <GrGallery fontSize="1.1rem" className={Estyles.icons} />
             </button>
-            <input type="file" ref={inputImage} hidden onChange={captureImage} />
-            
+            <input
+              type="file"
+              ref={inputImage}
+              hidden
+              onChange={captureImage}
+            />
 
             {/* Aligning options */}
 
@@ -252,12 +256,9 @@ const Editing = () => {
             <select style={{ appearance: "none", border: "none" }}></select>
           </div>
         </nav>
-       
       </div>
-      
+
       <div className={Estyles.MainBoundary}>
-        
-     
         {showLink ? (
           <div className={Estyles.linkBox}>
             <h4>Paste your Link Here....</h4>
@@ -270,26 +271,19 @@ const Editing = () => {
             />
           </div>
         ) : (
-          <div style={{display:'none'}}></div>
+          <div style={{ display: "none" }}></div>
         )}
-     
+
         <div
           id="edit"
-          className={Styles.Content}
+          className={Estyles.Content}
           contenteditable="true"
           ref={refer}
-          style={{padding:'4rem', margin:'2rem'}}
-        >
-          Type @ insert
+          style={{ padding: "4rem", margin: "2rem" }}
+        ></div>
+        <div className={Estyles.Extra}>
+        <FileDownloadIcon onClick={handlePrinter} sx={{color:"blue", fontSize:"6rem"}} />
         </div>
-        {/* <input
-          ref={inputImage}
-          hidden
-          accept="image/*"
-          onChange={captureImage}
-          type="file"
-        /> */}
-        
       </div>
     </>
   );
