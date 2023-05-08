@@ -143,6 +143,6 @@
     position: fixed;
     top: 37rem;
     left: 80rem;
-    z-index: 3;
+    z-index: 30;
     /* border:1px solid; */
 }

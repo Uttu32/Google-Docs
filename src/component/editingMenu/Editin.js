@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { TbTextColor } from "react-icons/tb";
 import { BsLink } from "react-icons/bs";
 import { GrGallery } from "react-icons/gr";
+import { AiOutlineHighlight } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
 import { icons } from "../../Icon/Icon";
 import PrintIcon from "@mui/icons-material/Print";
@@ -23,6 +24,7 @@ const Editing = () => {
   const [fontSize, setFontSize] = useState("text");
   const [color, setColor] = useState("#000000");
   const [showLink, setShowLink] = useState(false);
+  const [higlightColor, setHiglightColor] = useState("#000000");
   const [link, setLink] = useState("");
   const inputImage = useRef(null);
 
@@ -73,6 +75,12 @@ const Editing = () => {
   function handleFontColors(e) {
     setColor(e.target.value);
     document.execCommand("foreColor", false, color);
+  }
+
+  //Background color
+  function handleHighlightColor(e) {
+    setHiglightColor(e.target.value);
+    document.execCommand("backColor", false, e.target.value);
   }
 
   // Link
@@ -217,6 +225,20 @@ const Editing = () => {
               onChange={handleFontColors}
             />
 
+            {/* Background Color */}
+            <button>
+          <label htmlFor="highlighColor">
+            <AiOutlineHighlight style={{ zIndex: "1", color: higlightColor }} />
+          </label>
+          <input
+            className={style.input}
+            id="highlighColor"
+            type="color"
+            value={higlightColor}
+            onChange={handleHighlightColor}
+          />
+        </button>
+
             <div class={Estyles.vl}></div>
             {/* Link */}
 
@@ -281,9 +303,7 @@ const Editing = () => {
           ref={refer}
           style={{ padding: "4rem", margin: "2rem" }}
         ></div>
-        <div className={Estyles.Extra}>
-        <FileDownloadIcon onClick={handlePrinter} sx={{color:"blue", fontSize:"6rem"}} />
-        </div>
+        
       </div>
     </>
   );

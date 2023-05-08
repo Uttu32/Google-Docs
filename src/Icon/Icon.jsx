@@ -108,4 +108,8 @@ export const style=[
     icon: <BiUnderline />,
     action: "underline",
   },
+  {
+    icon: <AiOutlineStrikethrough />,
+    action: "strikethrough",
+  },
 ]
