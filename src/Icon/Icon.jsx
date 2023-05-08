@@ -93,7 +93,37 @@ export const ListFontFam = [
     "ui-sans-serif",    
   ];
 
-export const fontSizes = [6,5,4,3,2,1];
+  export const fontSizes = [
+    {
+      fontSize: 8,
+      action: "1",
+    },
+    {
+      fontSize: 9,
+      action: "2",
+    },
+    {
+      fontSize: 10,
+      action: "3",
+    },
+    {
+      fontSize: 11,
+      action: "4",
+    },
+    {
+      fontSize:12,
+      action: "5",
+    },
+    {
+      fontSize: 14,
+      action: "6",
+    },
+    {
+      fontSize: 18,
+      action: "7",
+    },
+  ];
+
 
 export const style=[
   {
