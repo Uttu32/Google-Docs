@@ -3,7 +3,11 @@
     justify-content: center;
     align-items: start;
     height: 3rem;
-    /* border: 1px solid; */
+    width: 100%;
+    /* border: 1px solid;*/
+    position: fixed;
+    top: 3.5rem;
+    background-color: white;
 }
 .vl {
     border-left: 1.5px solid gray;
@@ -81,13 +85,16 @@
 }
 
 .MainBoundary{
-    border: 1px solid ;
+    border: 1px solid lightgray ;
     height: fit-content;
     background-color: rgba(248,250,253,255);
     position: sticky;
-    z-index: -2;
+    z-index: -2020;
     display: flex;
     justify-content: center;
+    position: relative;
+    top: 3.5rem;
+
 }
 
 .edit{
@@ -130,4 +137,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Extra{
+    position: fixed;
+    top: 37rem;
+    left: 80rem;
+    z-index: 3;
+    /* border:1px solid; */
 }

@@ -3,9 +3,11 @@
     display: flex;
     justify-content: space-between;
     height: 80%;
-    width: 96%;
-    position: relative;
-    left: 2rem;
+    width: 100%;
+    position: sticky;
+    top: 0rem;
+    z-index: 9;
+    background-color: white;
 }
 
 .LeftSide{
@@ -43,6 +45,8 @@
     display: flex;
     gap: 1.3rem;
     justify-content: space-around;
+    position: relative;
+    left: 2rem;
     /* width: 20%; */
 }
 
@@ -51,6 +55,8 @@
     align-items: center;
     justify-content: space-around;
     gap: 2rem;
+    position: relative;
+    right: 2rem;
     /* border: 1px solid rebeccapurple; */
     /* position: relative; */
     /* right: 2.3rem; */
