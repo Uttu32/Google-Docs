@@ -68,7 +68,7 @@ const Editing = () => {
   //font Size
   function handleFontSize(e) {
     setFontSize(e.target.value);
-    document.execCommand("fontSize", false, fontSize);
+    document.execCommand("fontSize", "", e.target.value);
   }
 
   //color
@@ -178,8 +178,7 @@ const Editing = () => {
             <select
               className={Estyles.icons}
               style={{ backgroundColor: "#edf3fb" }}
-              id="fontSize"
-              onChange={handleFontSize}
+              onChange={(e)=>handleFontSize(e)}
             >
               <option className={Estyles.icons} style={{ width: "18px" }}>
                 {fontSize}
@@ -188,9 +187,9 @@ const Editing = () => {
                 <option
                   style={{ width: "18px" }}
                   className={Estyles.icons}
-                  key={x}
+                  key={x.action}
                 >
-                  {x}
+                  {x.action}
                 </option>
               ))}
             </select>
